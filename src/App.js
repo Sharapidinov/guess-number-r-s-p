@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import RockPaperScissors from "./comp/RocScissorsPaper"
+import GuessNumber from "./comp/GuessNumber"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [game, setGame] = useState(null)
+    return (
+        <div>
+            {
+                !game && <div className="menu">
+                    <button onClick={() => setGame(1)}>RockPaperScissors</button>
+                    <hr/>
+                    <button onClick={() => setGame(2)}>GuessNumber</button>
+                </div>
+            }
+
+
+            {(game === 1) && <RockPaperScissors/> }
+            {(game === 2) && <GuessNumber/> }
+        </div>
+    )
 }
 
-export default App;
+export default App
