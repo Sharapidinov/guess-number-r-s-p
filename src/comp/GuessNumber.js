@@ -10,12 +10,16 @@ function GuessNumber() {
     const [lost, setLost] = useState(+localStorage.getItem(`fails`))
     const [rangeLives, setRangeLives] = useState(3)
     const [rangeNum, setRangeNum] = useState(10)
+    const [help, setHelp] = useState(false)
 
     const num = (e) => {
         const a = Math.min(Math.max(e.target.value, 0), rangeNum)
         setPNum(a)
 
     }
+
+
+    const onHelp = (e) => setHelp(e.target.checked)
     const resetLS = () => {
         localStorage.removeItem("wins")
         localStorage.removeItem("fails")
@@ -59,8 +63,14 @@ function GuessNumber() {
                 setLost(+lost + 1)
                 toggleAgain(true)
                 localStorage.setItem(`fails` , String(+lost + 1))
-            } else {
-                setMessage(`Попробуйте еще раз`)
+            }
+            else {
+                if (help) {
+                    setMessage(compNum > pNum ? "upper": "lower" )
+                }else {
+                    setMessage(`Попробуйте еще раз`)
+                }
+
 
             }
 
@@ -70,7 +80,7 @@ function GuessNumber() {
 
 
     return (
-        <>
+        <div className="guess-number">
             <div className="container">
                 <div className="header">
                     <div>
@@ -84,19 +94,22 @@ function GuessNumber() {
                         <label>
                             Количество попыток {lives || 3}
 
-                            <input value={lives} max={11} min={0} onChange={liveRange} type="range"/>
+                            <input className="i-range" value={lives} max={11} min={1} onChange={liveRange} type="range"/>
                         </label>
                         <br/>
                         <label htmlFor="">
                             От 0  до {rangeNum}
 
-                            <input value={rangeNum} max={30} min={10} onChange={numRange} type="range"/>
+                            <input className="i-range" value={rangeNum} max={30} min={10} onChange={numRange} type="range"/>
                         </label>
-
+                        <label htmlFor="">
+                            С подскасками
+                            <input className="helper" onChange={onHelp} type="checkbox"/>
+                        </label>
                     </div>
                 </div>
                 <div className="main">
-                    <input value={pNum} onChange={num} type="number"/>
+                    <input className="pNum" value={pNum} onChange={num} type="number"/>
                     <br/>
                     {!again && <button disabled={!pNum} onClick={game}>Try</button>}
                     {again && <button onClick={playAgain}>New game</button>}
@@ -105,7 +118,7 @@ function GuessNumber() {
                     <div className="mes">{message}</div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

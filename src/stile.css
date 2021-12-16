@@ -1,12 +1,23 @@
-/**{*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*    box-sizing: border-box;*/
-/*}*/
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap");
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+*{
+    font-family: 'Fuzzy Bubbles', cursive;
+
+}
+button:hover{
+    color: white;
+}
 .container{
     max-width: 1440px;
     margin: 0 auto;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 .row {
     display: flex;
@@ -29,6 +40,51 @@
     padding: 25px;
     margin-bottom: 30px;
 }
+.menu{
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url("img/mainBg.png") center/cover  ;
+}
+.rsp{
+    background: url("img/mainBg.png") center/cover  ;
+    color: white;
+    height: 97vh;
+}
+.guess-number{
+    background: url("img/mainBg.png") center/cover  ;
+    color: white;
+    height: 97vh;
+}
+.guess-number button{
+    margin-bottom: 30px;
+    background: coral;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    margin-top: 15px;
+}
+.guess-number button:hover{
+    color: white;
+}
+.rsp button{
+    margin-bottom: 30px;
+    background: coral;
+    border: none;
+    border-radius: 50px;
+    padding: 8px;
+    margin-right: 10px;
+}
+.menu button{
+    margin-bottom: 30px;
+    background: coral;
+    border: none;
+    border-radius: 50px;
+    padding: 8px;
+    /*color: coral;*/
+}
 .card{
     width: 100px;
     height: 100px;
@@ -43,14 +99,63 @@
     align-items: center;
 }
 .mes{
-    /*padding: 10px;*/
+
     text-align: center;
     width: 250px;
-    height: 20px;
-    border: 2px solid black;
+    height: 25px;
+    border: 1px solid coral;
+    border-radius: 50px;
+    background:darkgreen ;
 }
 .rang{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+}
+.i-range{
+
+    margin-left: 10px;
+}
+
+    input[type='range'] {
+        overflow: hidden;
+        width: 80px;
+        -webkit-appearance: none;
+        background-color:darkgreen ;
+    }
+
+    input[type='range']::-webkit-slider-runnable-track {
+        height: 10px;
+        -webkit-appearance: none;
+        color: darkgreen;
+        margin-top: -1px;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        cursor: default;
+        background: #434343;
+        box-shadow: -80px 0 0 80px coral;
+    }
+.exit{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background: coral;
+    border: none;
+    border-radius: 50px;
+    padding: 8px;
+}
+.helper{
+    margin-left: 25px;
+    width: 40px;
+    height: 20px;
+
+}
+.pNum{
+    background-color: coral;
+    border-radius: 50px;
+    border: none;
 }

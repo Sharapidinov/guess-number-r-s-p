@@ -21,6 +21,8 @@ const RockPaperScissors = () => {
 
 
 
+
+
     const game = (p1Action) => {
         const images = {
             "Камень": rock,
@@ -47,7 +49,7 @@ const RockPaperScissors = () => {
     }
 
     return (
-        <div>
+        <div className="rsp">
             <div className="row">
                 <div className="col-6">
                     <button onClick={() => game("Камень")} type="button">Камень</button>
@@ -74,6 +76,8 @@ const RockPaperScissors = () => {
                     <img width={300} height={500} src={p2} alt=""/>
                 </div>
             </div>
+
+
         </div>
     )
 }
