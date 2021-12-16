@@ -11,9 +11,10 @@ function GuessNumber() {
     const [rangeLives, setRangeLives] = useState(3)
     const [rangeNum, setRangeNum] = useState(10)
     const [help, setHelp] = useState(false)
+    const [ofInp, setOfInp] = useState(false)
 
     const num = (e) => {
-        const a = Math.min(Math.max(e.target.value, 0), rangeNum)
+        const a = Math.min(Math.max(e.target.value, 0), rangeNum) || ""
         setPNum(a)
 
     }
@@ -40,6 +41,7 @@ function GuessNumber() {
     }
 
     const playAgain = () => {
+        setOfInp(false)
         setCompNum(Math.ceil(Math.random() * +rangeNum))
         toggleAgain(false)
         setLives(3)
@@ -49,6 +51,7 @@ function GuessNumber() {
 
     const game = (e) => {
         setPNum("")
+        setOfInp(true)
 
         if (+pNum === +compNum) {
             setMessage('Вы победили')
@@ -94,13 +97,13 @@ function GuessNumber() {
                         <label>
                             Количество попыток {lives || 3}
 
-                            <input className="i-range" value={lives} max={11} min={1} onChange={liveRange} type="range"/>
+                            <input className="i-range" disabled={ofInp} value={lives} max={11} min={1} onChange={liveRange} type="range"/>
                         </label>
                         <br/>
                         <label htmlFor="">
                             От 0  до {rangeNum}
 
-                            <input className="i-range" value={rangeNum} max={30} min={10} onChange={numRange} type="range"/>
+                            <input className="i-range" disabled={ofInp} value={rangeNum} max={30} min={10} onChange={numRange} type="range"/>
                         </label>
                         <label htmlFor="">
                             С подскасками

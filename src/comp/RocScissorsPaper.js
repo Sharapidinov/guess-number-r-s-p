@@ -50,30 +50,35 @@ const RockPaperScissors = () => {
 
     return (
         <div className="rsp">
-            <div className="row">
-                <div className="col-6">
-                    <button onClick={() => game("Камень")} type="button">Камень</button>
-                    <button onClick={() => game("Ножницы")} type="button">Ножницы</button>
-                    <button onClick={() => game("Бумага")} type="button">Бумага</button>
-                    <span>{res}</span>
-                </div>
-                <div className="col-6">
-                    p1 = {p1Points}
-                    <br/>
-                    p2 = {p2Points}
+            <div className="top">
+                <div className="row">
+                    <div className="col-6">
+                        <button onClick={() => game("Камень")} type="button">Камень</button>
+                        <button onClick={() => game("Ножницы")} type="button">Ножницы</button>
+                        <button onClick={() => game("Бумага")} type="button">Бумага</button>
+                        <span>{res}</span>
+                    </div>
+                    <div className="col-6">
+                        p1 = {p1Points}
+                        <br/>
+                        p2 = {p2Points}
+                    </div>
                 </div>
             </div>
-            <br/>
             <hr/>
 
             <div className="row">
                 <div className="col-6">
                     <div>P1:</div>
-                    <img width={300} height={500} src={p1} alt=""/>
+                    {
+                      p1 &&  <img width="300" height="500" src={p1} alt=""/>
+                    }
                 </div>
                 <div className="col-6">
                     <div>P2:</div>
-                    <img width={300} height={500} src={p2} alt=""/>
+                    {
+                       p2 &&  <img width="300" height="500" src={p2} alt=""/>
+                    }
                 </div>
             </div>
 
